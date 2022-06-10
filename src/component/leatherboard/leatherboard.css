@@ -1,0 +1,74 @@
+.leatherboard {
+  padding: 30px;
+}
+
+.leatherboard > .header {
+  display: flex;
+  align-items: center;
+}
+
+.participate-name{
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.grid-container{
+  margin-top: 10px !important;
+}
+
+.custom-bullet {
+  height: 8px;
+  width: 8px;
+  border-radius: 10px;
+}
+
+.custom-bullet-container {
+  display: flex;
+  align-items: center;
+}
+
+.custom-bullet-text {
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.data {
+  width: 100%;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  min-width: 56px;
+  width: 56px;
+  height: 56px;
+  margin-right: 10px;
+  border-radius: 50px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.barContainer {
+  flex: 1;
+  height: 8px;
+  background: #dfdfe7;
+  border-radius: 12px;
+}
+
+.filler {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+}
+
+.textValue {
+  margin-left: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: right;
+}

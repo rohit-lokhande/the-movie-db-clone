@@ -1,0 +1,49 @@
+.card-container{
+    /* background-color: red; */
+    margin-left: 40px;
+    /* margin-top: 00px; */
+    max-width: 150px;
+}
+
+.image{
+    border-radius: 10px;
+    min-height: calc(150px * 1.5);
+    height: calc(150px * 1.5);
+    background: #dbdbdb;
+    overflow: hidden;
+
+}
+
+.content{
+    padding-top: 4px;
+    padding-left: 14px;
+}
+
+.title{
+    font-size: 18px;
+    margin: 0;
+    width: 100%;
+    font-weight: 600;
+    word-wrap: normal;
+    overflow-wrap: break-word;
+}
+
+.date{
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    color: rgba(0,0,0,0.6);
+}
+
+.progressbar-container{
+    margin-top: -19px;
+    margin-left: 10px;
+    height: 40px;
+    position: relative;
+    padding: 2px;
+    border-radius: 20px;
+    width: 40px;
+    /* background-color: red; */
+    background-color: #081c22;
+    overflow: visible;
+}
