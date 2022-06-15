@@ -1,98 +1,83 @@
 import { Grid } from "@mui/material";
+import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import './leatherboard.css';
+import { useSelector, useDispatch } from "react-redux";
+import './style.css';
 import ProgrssBar from "./ProgrssBar";
+import { fetchLeatherBoard } from "../../redux/action/home-action";
 
 function LeatherBoard() {
 
-  const [data, setData] = useState();
-
-  const progressData = [
-    {
-      primaryColor: '#C0FECF',
-      secondaryColor: '#1ED5A9',
-      completed: 60,
-      total: 22312
-    },
-    {
-      primaryColor: '#FDC170',
-      secondaryColor: '#D93B63',
-      completed: 30,
-      total: 1254
-    }
-  ];
-
+  const leatherboardState = useSelector((state) => state.home.leatherboard);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    var data = [];
-    for (var i = 0; i < 4; i++) {
-      data.push(
-        <Grid item xs={6} style={{
-          display: 'flex', marginTop: '10px'
-        }}>
-          <span className="avatar">
-            <img className="avatar"
-              src="https://www.themoviedb.org/t/p/w64_and_h64_face/r1KY1E9EPR2YZWqovmslYMLBzjR.jpg"
-              alt="" />
-          </span>
-
-          <div class="data">
-            <a className="participate-name">fallinggucci</a>
-            {progressData.map((item, idx) => (
-              <ProgrssBar key={idx} primaryColor={item.primaryColor} secondaryColor={item.secondaryColor} completed={item.completed} total={item.total} />
-            ))}
-          </div>
-        </Grid>
-      )
-    }
-    setData(data);
+    dispatch(fetchLeatherBoard());
   }, []);
 
   return (
-    <Row className="leatherboard">
-      <Col className="header">
-        <h5>Leaderboard</h5>
-        <Row style={{
-          marginLeft: '4px'
-        }}>
-          <Col>
-            <CustomBullet
-              primaryColor='#C0FECF'
-              secondaryColor='#1ED5A9'
-              title='All Time Edits'
-            />
+    <div>
+      {
+        (leatherboardState.isFetch) ? <Row className="leatherboard">
 
-            <CustomBullet
-              primaryColor='#FDC170'
-              secondaryColor='#D93B63'
-              title='Edits This Week'
-            />
+          <Col className="header">
+            <h2>Leaderboard</h2>
+            <Row style={{
+              marginLeft: '4px'
+            }}>
+              <Col>
+                <CustomBullet
+                  primaryColor='#C0FECF'
+                  secondaryColor='#1ED5A9'
+                  title='All Time Edits' />
+
+                <CustomBullet
+                  primaryColor='#FDC170'
+                  secondaryColor='#D93B63'
+                  title='Edits This Week' />
+              </Col>
+            </Row>
           </Col>
-        </Row>
-      </Col>
 
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className='grid-container'>
-        {data}
-      </Grid>
-    </Row>
+          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className='grid-container'>
+            {leatherboardState.data.map((data, index) =>
+              <Grid item xs={6} style={{
+                display: 'flex', marginTop: '10px'
+              }}>
+                <span className="avatar">
+                  <img className="avatar"
+                    src={data.profile_url}
+                    alt="" />
+                </span>
+
+                <div className="data">
+                  <a className="participate-name">{data.user_name}</a>
+
+                  <ProgrssBar primaryColor='#C0FECF' secondaryColor='#1ED5A9' completed={data.all_hits.progress} total={data.all_hits.value} />
+
+                  <ProgrssBar primaryColor='#FDC170' secondaryColor='#D93B63' completed={data.week_hits.progress} total={data.week_hits.value} />
+
+                </div>
+              </Grid>
+            )}
+
+          </Grid>
+        </Row> : <Container />
+      }
+    </div>
   )
 }
 
 const CustomBullet = (props) => {
-
   return (
     <Col className="custom-bullet-container">
       <div className="custom-bullet"
         style={{
           backgroundImage: `linear-gradient(to right, ${props.primaryColor} 0%, ${props.secondaryColor} 100%)`
-        }}></div>
-      <span className="custom-bullet-text">{props.title}
-
-      </span>
-
+        }} />
+      <span className="custom-bullet-text">{props.title}</span>
     </Col>
-
   )
 }
 

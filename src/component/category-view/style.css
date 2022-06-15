@@ -1,10 +1,50 @@
 .scroll-view {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow-x: scroll;
   width: 100%;
   padding-bottom: 20px;
 }
+
+.scroller_wrap {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.scroller_wrap.should_fade.is_fading:after {
+  transition: linear 0.3s;
+  opacity: 1;
+}
+
+.scroller_wrap.should_fade:after {
+  content: '';
+  width: 60px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: linear-gradient(to right, rgba(255,255,255,0) 0%, #fff 100%);
+  will-change: opacity;
+  pointer-events: none;
+}
+
+
+
+/* 
+
+.row >  .scroll-view-container > .scroll-view::after{
+  content: '';
+  width: 60px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: linear-gradient(to right, rgba(255,255,255,0) 0%, red 100%);
+  will-change: opacity;
+  pointer-events: none;
+} */
+
 
 .scroll-view::-webkit-scrollbar {
   width: 8px;
@@ -23,4 +63,10 @@
 .header {
   display: flex;
   align-items: center;
+  padding-left: 4em !important;
+}
+
+.header h2{
+  font-size: 1.5em;
+  font-weight: 600;
 }

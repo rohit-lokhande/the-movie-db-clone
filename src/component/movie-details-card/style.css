@@ -1,0 +1,258 @@
+.details-card-container {
+  padding-top: 28px;
+  padding-bottom: 28px;
+
+  display: flex;
+  align-items: center;
+}
+
+.poster {
+  display: block;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  position: relative;
+  top: 0;
+  left: 0;
+  min-width: 300px;
+  width: 300px;
+  height: 450px;
+}
+
+.watch-option-container {
+  background-color: #032541;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 6px;
+}
+
+.watch-option {
+}
+
+.poster-container {
+  width: 300px !important;
+  padding: 0px !important;
+}
+
+.overview-container {
+  padding-left: 32px;
+  padding-top: 50px;
+}
+
+
+
+.overview-container h2 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600 !important;
+}
+
+.overview-container p {
+  color: #ffffff;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.crew-container {
+}
+
+.crew-container h6 {
+  color: #ffffff;
+  margin: 0px !important;
+}
+
+.crew-container h6:hover {
+  color: #ffffff92;
+}
+
+.crew-container span {
+  color: #ffffff;
+  font-size: 14px !important;
+}
+
+.actions-container {
+  display: flex;
+  align-items: end;
+  margin-top: 20px;
+}
+
+.actions-container h6 {
+  color: #ffffff;
+}
+
+.action-button {
+  background-color: #032541;
+  border-radius: 40px;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.action-tooltip {
+  /* background-color: #032541; */
+  align-items: center;
+}
+.tooltip > div.tooltip-inner {
+  background-color: #032541 !important;
+  color: white !important;
+  overflow: hidden;
+}
+
+.tooltip.show {
+  opacity: 1 !important;
+}
+
+.tooltip-arrow::before {
+  bottom: -1px;
+  border-width: 0 0.4rem 0.4rem;
+  border-bottom-color: #032541 !important;
+}
+
+.vote-container {
+  display: flex;
+  height: 75px;
+  /* width: 160px; */
+  align-items: center;
+}
+
+.vote-container h6{
+  font-weight: 600;
+}
+
+.vote-container .progressbar-container {
+  /* margin: 0px !important; */
+  /* padding: 2px; */
+  /* height: 70px; */
+  /* position: relative; */
+  /* border-radius: 100px; */
+  /* width: 70px; */
+  /* background-color: #081c22; */
+  /* overflow: visible; */
+  /* transition: all 0.3s; */
+  /* margin-right: 8px !important; */
+}
+
+.progressbar-container{
+  margin: 0px !important;
+  margin-right: 4px !important;
+  height: 75px;
+  width: 75px;
+  background-color: transparent !important;
+}
+
+.poster-container-shimmer{
+  width: 100% !important;
+}
+
+.prodgress-view{
+  height: 70px;
+  width: 70px;
+  transition: all 0.3s;
+}
+
+.prodgress-view:hover{
+  height: 75px;
+  width: 75px;
+  transition: all 0.3s; 
+}
+
+
+
+li {
+  display: inline;
+  margin-right: 0.8em;
+}
+
+ol {
+  display: flex;
+  padding-left: 0px !important;
+  margin-bottom: 0px !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-trailer {
+  color: #ffffff;
+  display: flex;
+  align-items: baseline;
+}
+
+.play-trailer :hover {
+  color: rgb(var(--lightGrey));
+}
+
+.play-trailer h6 {
+font-weight: 600;
+}
+
+.play-button {
+  margin-right: 5px;
+}
+
+.header-container {
+}
+
+.header-container > .header {
+  color: #ffffff;
+  display: flex;
+  font-size: 16px;
+  padding: 0px !important;
+}
+.header-container .header h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.header-container .header h1:hover {
+  color: #ffffff79;
+}
+
+.header-container .header .movie-year {
+  color:rgb(var(--lightGrey));
+  font-weight: normal !important;
+  padding-left: 4px;
+}
+
+
+.header-container .header-details {
+  color: #ffffff;
+  display: flex;
+  /* font-size: 12px; */
+  align-items: top;
+}
+
+.movie-grade {
+  border: 1px white solid;
+  padding-left: 2px;
+  padding-right: 2px;
+color:  rgb(var(--lightGrey));
+  font-size: 12px;
+}
+
+.header-details a {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.watch-option-container > img {
+  border-radius: 6px;
+}
+
+.provider-title {
+  color: #ffffff75;
+  margin: 0px !important;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.provider-title:hover {
+  color: #ffffff75;
+  margin: 0px !important;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+

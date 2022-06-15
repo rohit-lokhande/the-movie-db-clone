@@ -1,12 +1,5 @@
 .search-background{
     background-image: linear-gradient(to right, rgba(3,37,65, 0.8) 0%, rgba(3,37,65, 0) 100%), url('https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/9ZyAUZrfccsjtDwYgc7yvOBnqM9.jpg');
-
-   
-   
-   
-   
-   
-   
     min-height: 300px;
     height: calc(100vh / 2.5);
     max-height: 360px;
@@ -24,6 +17,21 @@
     padding-top: 30px;
     padding-bottom: 30px;}
 
+
+  .search-background  h2{
+      font-size: 3em;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0px !important;
+    }
+
+    
+  .search-background  h3{
+    font-size: 2em;
+    font-weight: 600;
+    line-height: 1;
+  }
+
 .search-input{
     /* padding: 40px; */
     /* margin: 20px !important; */
@@ -36,7 +44,7 @@
     border: none;
     background-color: transparent !important;
     /* border-radius: 30px !important; */
-    padding: 10px 20px;
+    padding: 10px 0px;
     position: relative !important;
 
     

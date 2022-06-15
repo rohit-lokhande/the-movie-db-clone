@@ -42,3 +42,7 @@
   background-color: transparent !important;
   color: #000 !important;
 }
+
+.route-body{
+  padding-bottom: 30px;
+}

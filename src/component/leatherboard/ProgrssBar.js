@@ -1,5 +1,5 @@
 import React from "react";
-import './leatherboard.css'
+import './style.css'
 
 function ProgrssBar(props) {
     const { bgcolor, completed } = props;

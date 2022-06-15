@@ -2,90 +2,39 @@ import React from "react";
 import './moviecard.css'
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import dateFormat from 'dateformat';
+import ReatingView from "../rating-view/RatingView";
+
 function MovieCard(props) {
-    return (
-        <div className="card-container">
-
-
-            <img
-                className="image"
-                src="https://www.themoviedb.org/t/p/w220_and_h330_face/ekZobS8isE6mA53RAiGDG93hBxL.jpg"
-                alt=""
-            ></img>
-<div className="progressbar-container">
-
-
-<CircularProgressbar
-  value={props.index}
-  text={`${props.index}%`}
-  background={true}
-  styles={{
-    // Customize the root svg element
-    root: {
-        
-    },
-    // // Customize the path, i.e. the "completed progress"
-    path: {
-      // Path color
-      stroke: '#20cc77',
-      // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-    //   strokeLinecap: 'butt',
-      // Customize transition animation
-    //   transition: 'stroke-dashoffset 0.5s ease 0s',
-      // Rotate the path
-    //   transform: 'rotate(0.25turn)',
-    //   transformOrigin: 'center center',
-    },
-    // Customize the circle behind the path, i.e. the "total progress"
-    trail: {
-      // Trail color
-      stroke: '#1e4228',
-      // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-    //   strokeLinecap: 'butt',
-      // Rotate the trail
-    //   transform: 'rotate(0.25turn)',
-    //   transformOrigin: 'center center',
-    },
-    // Customize the text
-    text: {
-      // Text color
-      fill: '#fff',
-      // Text size
-      fontSize: '24px',
-      fontWeight: 'bold'
-    },
-    
-    // Customize background - only used when the `background` prop is true
-    background: {
-      fill: '#081c22',
-    },
-  }}
-/>
 
 
 
+   const onClick= () => {
+    props.onClick(props.data.id);
+   }
 
 
+  return (
+    <div className="card-container" onClick={onClick} >
+      <img
+        className="image"
+        src={`https://image.tmdb.org/t/p/w220_and_h330_face/${props.data.poster_path}`}
+        alt="" />
 
+      <div className="progressbar-container2">
+        <ReatingView
+         value={(props.data.vote_average) * 10}
+         text={(props.data.vote_average * 10)}
+        />
+      </div>
 
-
-
-
-
-
-
-
-
-
-</div>
-            <div
-             className="content">
-                 <p className="title">Lucifer</p>
-                 <p className="date">Jan 25, 2016</p>
-             </div>
-
-        </div>
-    )
+      <div
+        className="content">
+        <p className="title">{props.data.title != null ? props.data.title : props.data.name}</p>
+        <p className="date"> {dateFormat(props.data.release_date, "mmm d, yyyy")}</p>
+      </div>
+    </div>
+  )
 }
 
 export default MovieCard;

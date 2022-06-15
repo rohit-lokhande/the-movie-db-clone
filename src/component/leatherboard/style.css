@@ -1,5 +1,6 @@
 .leatherboard {
-  padding: 30px;
+  /* padding: 30px; */
+  margin-top: 40px !important;
 }
 
 .leatherboard > .header {
@@ -7,10 +8,12 @@
   align-items: center;
 }
 
+
 .participate-name{
   color: #000;
   text-decoration: none;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .grid-container{
@@ -29,7 +32,7 @@
 }
 
 .custom-bullet-text {
-  font-size: 12px;
+  font-size: 13px;
   margin-left: 8px;
 }
 
@@ -71,4 +74,16 @@
   font-weight: bold;
   font-size: 14px;
   text-align: right;
+}
+
+
+.header h2{
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding-left: 4em !important;
 }

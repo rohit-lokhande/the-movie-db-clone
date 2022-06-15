@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
-import '../../styles/navbar.css'
-
+import './style.css'
 
 function NavDropdown(props) {
 
   const [options, setOptions] = useState();
+
   useEffect(() => {
     let options = props.links.map((link) =>
       <a href={link.herf}>{link.title}</a>
     );
     setOptions(options);
-  }, []);
+  },[]);
 
   return (
     <div className="dropdown">

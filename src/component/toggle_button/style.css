@@ -1,0 +1,41 @@
+.toggle-btn {
+  min-width: 120px !important;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+ 
+}
+
+.toggle-btn a {
+ 
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+
+.selected {
+  background-color: rgb(var(--tmdbDarkBlue));
+  border-radius: 20px;
+  transition: all 0.3;
+}
+
+.selected a {
+  background: linear-gradient(to right, #c0fecf 0%, #1ed5a9 100%);
+  font-size: 0.9em;
+  font-weight: 600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-container {
+  border: 1px #032541 solid;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  max-width: min-content !important;
+  display: flex;
+  align-items: baseline;
+}
