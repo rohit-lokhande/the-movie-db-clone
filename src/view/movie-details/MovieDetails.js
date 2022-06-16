@@ -6,19 +6,18 @@ import { fetchMediaDetails } from "../../redux/action/details-action";
 
 function MovieDetails(params) {
 
-    let { id } = useParams();
+    let { type,id } = useParams();
 
     const detailsState = useSelector((state) => state.details);
 
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchMediaDetails(id));
+
+        console.log('Open Movie Details with =>',type , id);
+        dispatch(fetchMediaDetails(type,id));
     }, []);
 
-
-
-    console.log(id);
 
     return (
 

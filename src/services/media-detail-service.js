@@ -2,8 +2,8 @@ import { mediaDetailsEndpoint } from "../api/endpoint";
 import axios from "axios";
 
 class MediaDetailService{
-    fetchMediaDetails(id) {
-        return axios.get(mediaDetailsEndpoint(id));
+    fetchMediaDetails(type,id) {
+        return axios.get(mediaDetailsEndpoint(type,id));
     }
 }
 

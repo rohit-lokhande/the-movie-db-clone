@@ -41,33 +41,33 @@ export const trendingFilter = [
 
 export const sortFilter = [
     {
-        'id': '1',
+        'id': 1,
         'name': 'Popularity Descending'
     },
     {
-        'id': '2',
+        'id': 2,
         'name': 'Popularity Ascending'
     },
     {
-        'id': '3',
+        'id': 3,
         'name': 'Rating Descending'
     },
     {
-        'id': '4',
+        'id': 4,
         'name': 'Rating Ascending'
     },
     {
-        'id': '5',
+        'id': 5,
         'name': 'Release Date Descending'
     },
     {
-        'id': '6',
+        'id': 6,
         'name': 'Release Date Ascending'
     }, {
-        'id': '7',
+        'id': 7,
         'name': 'Title (A-Z)'
     }, {
-        'id': '8',
+        'id': 8,
         'name': 'Title (Z-A)'
     }
 

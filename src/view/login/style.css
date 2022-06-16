@@ -1,0 +1,15 @@
+.login-container{
+padding-top: 40px;
+}
+
+.login-container > h5{
+
+    font-weight: 600;
+
+}
+
+
+.login-container > p >a{
+text-decoration: none;
+
+}

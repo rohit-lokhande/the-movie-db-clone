@@ -24,6 +24,17 @@ function CategoryView(props) {
         console.log(selectedFilter);
     }, []);
 
+    const onCardClick = (e)=>{
+        let type;
+        if (filter.id === 'streaming') {
+            type = 'movie';
+        } else if (filter.id === 'tv') {
+            type = 'tv';
+        }
+
+        props.onCardClick(e,type);
+    }
+
     return (
         <div>
             <Row >
@@ -39,7 +50,7 @@ function CategoryView(props) {
                         <Col className="scroll-view ">
                             {
                                 props.state.data.map((number, index) =>
-                                    <MovieCard key={number.id} item={number} data={number} onClick={props.onCardClick} />
+                                    <MovieCard key={number.id} item={number} data={number} onClick={onCardClick} />
                                 )
                             }
                         </Col>

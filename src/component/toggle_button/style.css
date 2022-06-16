@@ -5,15 +5,12 @@
   padding-right: 10px;
   padding-top: 2px;
   padding-bottom: 2px;
- 
 }
 
 .toggle-btn a {
- 
   font-weight: 600;
   font-size: 0.9em;
 }
-
 
 .selected {
   background-color: rgb(var(--tmdbDarkBlue));

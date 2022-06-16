@@ -9,9 +9,10 @@ export const detailsState = {
     details: {}
 }
 
-export function fetchMediaDetails(id) {
-
+export function fetchMediaDetails(type,id) {
+console.log("sdfsdfsdfsd");
     return async function fetchMediaDetailsFromServer(dispatch, getState) {
+        console.log('Trigger DEtails call');
         dispatch({
             type: detailsActions.FETCH_MOVIE_DETAILS,
             payload: {
@@ -19,7 +20,7 @@ export function fetchMediaDetails(id) {
                 data: {}
             }
         })
-        const responce = await MediaDetailService.fetchMediaDetails(id).catch((error) => {
+        const responce = await MediaDetailService.fetchMediaDetails(type,id).catch((error) => {
             console.log(error);
         });
         dispatch({

@@ -6,15 +6,25 @@ import NavDropdown, { DropdownItem } from "./NavDropdown";
 import logo from '../../assets/images/logo.svg'
 
 import { GoPlus, GoSearch } from 'react-icons/go';
-import { MdOutlineClose } from 'react-icons/md'
-
+import { MdOutlineClose } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from "../../redux/action/auth-action";
 function NavBar() {
 
     const [showSearch, setShowSearch] = useState(false);
+    const authState = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+
 
     const onSearchClick = () => {
         setShowSearch(!showSearch);
     }
+
+    
+    const onLogoutClick = () => {
+     dispatch(logout());   
+    }
+
 
     return (
         <Row>
@@ -38,18 +48,18 @@ function NavBar() {
                                 title='Movies'
                                 links={[
                                     new DropdownItem('Popular', '/list/movie/popular'),
-                                    new DropdownItem('Now Playing', '/movie/now-playing'),
-                                    new DropdownItem('Upcoming', '/movie/upcoming'),
-                                    new DropdownItem('Top Rated', '/movie/top-rated')
+                                    new DropdownItem('Now Playing', '/list/movie/now_playing'),
+                                    new DropdownItem('Upcoming', '/list/movie/upcoming'),
+                                    new DropdownItem('Top Rated', '/list/movie/top_rated')
                                 ]} />
 
                             <NavDropdown
                                 title='TV Shows'
                                 links={[
-                                    new DropdownItem('Popular', '#'),
-                                    new DropdownItem('Airing Today', '#'),
-                                    new DropdownItem('On TV', '#'),
-                                    new DropdownItem('Top Rated', '#')
+                                    new DropdownItem('Popular', '/list/tv/popular'),
+                                    new DropdownItem('Airing Today', '/list/tv/airing_today'),
+                                    new DropdownItem('On TV', '/list/tv/on_the_air'),
+                                    new DropdownItem('Top Rated', '/list/tv/top_rated')
                                 ]} />
 
                             <NavDropdown
@@ -61,7 +71,7 @@ function NavBar() {
                             <NavDropdown
                                 title='More'
                                 links={[
-                                    new DropdownItem('Discussions', '#'),
+                                    new DropdownItem('Discussions', '/dicussion'),
                                     new DropdownItem('Leaderboard', '#'),
                                     new DropdownItem('Support', '#'),
                                     new DropdownItem('API', '#')
@@ -70,7 +80,12 @@ function NavBar() {
 
                         <Nav>
                             <Nav.Link> <GoPlus color="#FFFFFF" size={24} /></Nav.Link>
-                            <Nav.Link href="/login">Login</Nav.Link>
+
+                            {
+                                (authState.username != null) ? loginUserView(authState.username,onLogoutClick) : <Nav.Link href="/login">Login</Nav.Link>
+                            }
+
+
                             <Nav.Link >Join TMDB</Nav.Link>
                             <Nav.Link> {
                                 showSearch ? <MdOutlineClose
@@ -100,6 +115,27 @@ function NavBar() {
             }
         </Row>
     )
+}
+
+function loginUserView(username, onClick) {
+  
+    
+    
+    return (
+        <div style={{
+            backgroundColor: 'rgb(var(--tmdbLogoRed))',
+            borderRadius: '40px',
+            padding: '8px',
+            alignItems: 'center',
+            textAlign: 'center',
+            width: '40px',
+            fontWeight: 600,
+            color: 'white'
+        }} onClick={onClick} >
+            <a>{username[0]}</a>
+        </div>
+    )
+
 }
 
 export default NavBar;

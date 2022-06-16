@@ -17,7 +17,6 @@ function MovieDetailsCard(props) {
 
     const provider = props.data.providers;
 
-    console.log(provider.rent[0].logo_path);
     return (
         <div className="details-card-container"
             style={{
@@ -38,7 +37,7 @@ function MovieDetailsCard(props) {
                         alt="Poster"
                         src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${props.data.poster_path}`} />
 
-                    <div className="watch-option-container">
+                    {(provider != null) && <div className="watch-option-container">
                         <div style={{
                             alignItems: 'center',
                             display: 'flex',
@@ -48,7 +47,7 @@ function MovieDetailsCard(props) {
 
                             <div>
                                 <img height={40} width={40} alt=""
-                                    src={`https://www.themoviedb.org/t/p/original${provider.rent[0].logo_path}`} />
+                                    src={`https://www.themoviedb.org/t/p/original${getProviderPoster(provider)}`} />
                             </div>
                             <div style={{
                                 textAlign: 'start',
@@ -61,7 +60,7 @@ function MovieDetailsCard(props) {
                                 }}>Watch Now</h6>
                             </div>
                         </div>
-                    </div>
+                    </div>}
                 </div>
 
                 <div className="overview-container">
@@ -90,7 +89,8 @@ function MovieDetailsCard(props) {
                         </Grid>
                     </div> */}
                 </div>
-            </Container>        </div>
+            </Container>
+        </div>
     )
 
 }
@@ -103,6 +103,21 @@ const getProviderTitle = (provider) => {
         return 'Available to Rent';
     } else {
         return 'Streaming Now';
+    }
+}
+
+const getProviderPoster = (provider) => {
+
+
+    if (provider.rent != null) {
+        return provider.rent[0].logo_path;
+    } else if (provider.flatrate != null) {
+        return provider.flatrate[0].logo_path;
+    } else if (provider.buy != null) {
+        return provider.buy[0].logo_path;
+    }
+    else {
+        return '';
     }
 }
 
@@ -138,13 +153,13 @@ const ActionView = (props) => {
                 <li>
                     <div className="vote-container">
                         <div className="progressbar-container">
-                           <div className="prodgress-view">
-                           <ReatingView
-                                
-                                value={(props.data.vote_average) * 10}
-                                text={(Math.trunc(props.data.vote_average) * 10)}
-                            />
-                           </div>
+                            <div className="prodgress-view">
+                                <ReatingView
+
+                                    value={(props.data.vote_average) * 10}
+                                    text={(Math.trunc(props.data.vote_average) * 10)}
+                                />
+                            </div>
                         </div>
                         <span> <h6>User <br></br> Score</h6> </span>
                     </div>
@@ -190,7 +205,7 @@ const HeaderView = (props) => {
     return (
         <div className="header-container">
             <div className="header">
-                <h1>{props.data.title} </h1>
+                <h1>{props.data.title != null ? props.data.title : props.data.name}</h1>
                 <h1 className="movie-year"> ({dateFormat(props.data.release_date, "yyyy")})</h1>
             </div>
 
@@ -200,19 +215,24 @@ const HeaderView = (props) => {
                         <div className="movie-grade">PG-13</div>
                     </li>
 
-                    <li>
-                        <a>{props.data.release_date} ({props.data.production_companies[0].origin_country})</a>
-                    </li>
+                    {
+                        (props.data.release_date != null) && <li>
+                            <a>{props.data.release_date} ({props.data.production_companies[0].origin_country})</a>
+                        </li>
+                    }
+
 
                     <li>
                         <a> &#8226; {getGenres(props.data.genres)}
                         </a>
                     </li>
 
-                    <li>
-                        <a> &#8226; {calcuateRunTime(props.data.runtime)}
-                        </a>
-                    </li>
+                    {
+                        (props.data.runtime != null) && <li>
+                            <a> &#8226; {calcuateRunTime(props.data.runtime)}
+                            </a>
+                        </li>
+                    }
 
                 </ol>
             </div>

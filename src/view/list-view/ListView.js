@@ -7,12 +7,13 @@ import MovieCardListView from '../../component/movie_card/MovieCardListView';
 import store from '../../redux/store';
 import ExpandableContainer from '../../component/expandable-container';
 import './style.css';
-import { useParams } from "react-router-dom";
-import { fetchPaginatedList } from '../../redux/action/pagination-action';
+import { useParams,useNavigate } from "react-router-dom";
+import { fetchPaginatedList, sortList } from '../../redux/action/pagination-action';
 
 function ListView(props) {
     const listState = useSelector((state) => state.pagination);
     let { type,filter } = useParams();
+    let navigate = useNavigate();
 
     const [sortState, setSortState] = useState('1');
     const sortMethods = {
@@ -27,6 +28,10 @@ function ListView(props) {
 
     };
     const dispatch = useDispatch();
+
+
+
+
     useEffect(() => {
         dispatch(fetchPaginatedList(type, filter));
 
@@ -34,7 +39,23 @@ function ListView(props) {
 
     const onItemClick = (item) => {
         setSortState(item.id);
+
+        let tempData = listState.data.map((todo) => {
+            const tempTodo = { ...todo };
+           
+                return tempTodo
+            
+        });
+
+
+        var sortedData =  tempData.sort(sortMethods[item.id].method);
+
+        dispatch(sortList(sortedData));
         console.log(item);
+    }
+
+    const onMovieCardClick = (e) => {
+        navigate(`/details/${type}/${e}`);
     }
 
     return (
@@ -54,9 +75,9 @@ function ListView(props) {
                                 <Col xs={9}>
                                     <Grid container rowSpacing={4} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
                                         {
-                                            listState.data.results.sort(sortMethods[sortState].method).map((number, index) =>
+                                            listState.data.map((number, index) =>
                                                 <Grid item xs={4} sm={3} md={2.4}>
-                                                    <MovieCardListView key={number.id} item={number} data={number} />
+                                                    <MovieCardListView key={number.id} item={number} data={number} onClick={onMovieCardClick} />
                                                 </Grid>
                                             )
                                         }
@@ -65,7 +86,7 @@ function ListView(props) {
                         </Container>
                     </div>
                     : <div></div>
-            }
+            } 
 
         </div>
     )

@@ -24,8 +24,8 @@ function Home() {
         dispatch(fetchTrendingList(trendingFilter[0].id));
     }, []);
 
-    const onMovieCardClick = (e) => {
-        navigate(`/details/${e}`);
+    const onMovieCardClick = (e,type) => {
+        navigate(`/details/${type}/${e}`);
     }
 
     const onCatrgoryFilterChange = (filter) => {

@@ -12,6 +12,7 @@
     align-items: center;
     align-content: space-between;
     justify-content: center;
+    bottom: 0;
 
 }
 .logo-container

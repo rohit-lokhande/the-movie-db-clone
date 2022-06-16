@@ -35,15 +35,20 @@ export const leatherboardEndpoint = () => {
     return `${BASE_URL}leatherboard`;
 }
 
-export const mediaDetailsEndpoint = (movieId) => {
-    return `${BASE_URL}/movie/details/${movieId}`;
+export const mediaDetailsEndpoint = (type,movieId) => {
+    return `${BASE_URL}media-details/${type}/${movieId}`;
 }
 
 
 export const paginationEndpoint = (type, filter) => {
-    return `${BASE_URL}${type}/${filter}/4`;
+    console.log(type ,"=>", filter);
+    return `${BASE_URL}media/${type}/${filter}/4`;
 }
 
 export const searchQueryEndpoint = (query) => {
     return `${BASE_URL}search/${query}`;
+}
+
+export const loginEndpoint = () => {
+    return `${BASE_URL}login`;
 }

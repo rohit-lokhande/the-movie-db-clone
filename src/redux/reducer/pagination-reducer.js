@@ -7,6 +7,11 @@ const paginationReducer = (state = paginationState, action) => {
                 ...state,
                 ...action.payload
             }
+            case paginationActions.LIST_UPDATE:
+                return {
+                    ...state,
+                    ...action.payload
+                }
 
         default:
             return state;
