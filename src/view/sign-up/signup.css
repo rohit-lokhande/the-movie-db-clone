@@ -1,3 +1,20 @@
-ul {
-    list-style-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-739-check-5d342631f0752609bcce3a844f9ba24f1c95d2d06b1674b1ba146d35f9cdce7a.svg');
-  }
+.singup-pointer {
+  list-style: "👍";
+  list-style-position: outside !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-point {
+  margin-left: -20px;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.singup-pointer li {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1em;
+  line-height: 1.4em;
+  margin: 0;
+}

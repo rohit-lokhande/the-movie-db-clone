@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "category":"movie",
         "question": {
             "title": "Why don't people like this film?",
             "poster": "https://www.themoviedb.org/t/p/w45_and_h67_face_filter(moderate,nudity,96)/yj8LbTju1p7CUJg7US2unSBk33s.jpg",
@@ -12,6 +13,7 @@
     },
     {
         "id": 2,
+        "category":"movie",
         "question": {
             "title": "Film with a misleading title",
             "poster": "https://www.themoviedb.org/t/p/w45_and_h67_face_fi…derate,nudity,96)/gDaxYkYNbHuM2VlUazbcpnFZB6d.jpg",
@@ -23,6 +25,7 @@
     },
     {
         "id": 3,
+        "category":"tv",
         "question": {
             "title": "That constantly whimpering, sniveling child.",
             "poster": "https://www.themoviedb.org/t/p/w45_and_h67_face_fi…derate,nudity,96)/qLaXnLzqleBWQtjvZ6JGVSaKoC3.jpg",

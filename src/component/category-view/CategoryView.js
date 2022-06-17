@@ -54,7 +54,7 @@ function CategoryView(props) {
                                 )
                             }
                         </Col>
-                    </Container> : <Container>
+                    </Container> : <Container xs={2}>
                         <Col className="scroll-view">
                             {shimmer}
                         </Col>

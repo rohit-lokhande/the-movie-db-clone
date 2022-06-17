@@ -22,7 +22,7 @@
   max-height: 200px;
   border-radius: 6px;
   position: absolute;
-  width: calc(185px * 1.5) !important;
+  width: calc(158px * 1.5) !important;
   overflow-y: auto;
 }
 

@@ -29,7 +29,27 @@
   pointer-events: none;
 }
 
+.scroller_wrap.should_fade.is_fading::before {
+  transition: linear 0.3s;
+  opacity: 1;
+}
 
+.scroller_wrap.should_fade::before {
+  content: '';
+  width: 60px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to left, rgba(255,255,255,0) 0%, rgb(255, 255, 255) 100%);
+  will-change: opacity;
+  pointer-events: none;
+}
+
+
+.scroll-view:first-child{
+  padding-left: 50px;
+}
 
 /* 
 

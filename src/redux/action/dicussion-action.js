@@ -8,7 +8,8 @@ export const dicussionActions = {
 
 export const dicussionState = {
     isFetch: false,
-    dicussion: []
+    movie: [],
+    tv:[]
 }
 
 export function fetchDicussions() {
@@ -17,15 +18,26 @@ export function fetchDicussions() {
             type: dicussionActions.FETCH_DICUSSIONS,
             payload: {
                 isFetch: false,
-                dicussion: []
+                movie: [],
+    tv:[]
             }
         })
         const responce = DicussionService.fetchDicussion();
+
+        var movies = responce.filter(function(item){
+            return item.category === 'movie';
+         });
+        
+         var tv = responce.filter(function(item){
+            return item.category === 'tv';
+         });
+
         dispatch({
             type: dicussionActions.FETCH_DICUSSIONS,
             payload: {
                 isFetch: true,
-                dicussion: responce
+                movie: movies,
+                tv:tv
             }
         })
     }
@@ -35,11 +47,20 @@ export function addDicussions(chat, reply) {
     return async function addDicussionsFromServer(dispatch, getState) {
 
         const responce = DicussionService.updateDicussion(chat, reply);
+        var movies = responce.filter(function(item){
+            return item.category === 'movie';
+         });
+        
+         var tv = responce.filter(function(item){
+            return item.category === 'tv';
+         });
+
         dispatch({
-            type: dicussionActions.FETCH_DICUSSIONS,
+            type: dicussionActions.ADD_DICUSSIONS,
             payload: {
                 isFetch: true,
-                dicussion: responce
+                movie: movies,
+                tv:tv
             }
         })
     }

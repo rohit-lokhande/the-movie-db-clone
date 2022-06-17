@@ -3,7 +3,6 @@ import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import LeatherBoard from "../../component/leatherboard/LeatherBoard";
 import { useDispatch, useSelector } from 'react-redux';
-// import { fetchPopularList, fetchTopRatedList, fetchTrendingList } from "../../redux/actions";
 import { popularFilter, topRatedFilter, trendingFilter } from "../../model/filter";
 import SearchPoster from "../../component/search-poster";
 import CategoryView from "../../component/category-view";
@@ -24,7 +23,7 @@ function Home() {
         dispatch(fetchTrendingList(trendingFilter[0].id));
     }, []);
 
-    const onMovieCardClick = (e,type) => {
+    const onMovieCardClick = (e, type) => {
         navigate(`/details/${type}/${e}`);
     }
 

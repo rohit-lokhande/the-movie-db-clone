@@ -15,11 +15,10 @@ const style = {
 };
 
 function ProfileImageContainer(props) {
-    return(
+    return (
         <div style={style} >
-            <a>{props.username[0]}</a>
+            {props.username[0]}
         </div>
-
     )
 }
 

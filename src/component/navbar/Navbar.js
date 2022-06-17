@@ -86,7 +86,7 @@ function NavBar() {
                             }
 
 
-                            <Nav.Link >Join TMDB</Nav.Link>
+                            <Nav.Link href="/signup">Join TMDB</Nav.Link>
                             <Nav.Link> {
                                 showSearch ? <MdOutlineClose
                                     color="white"

@@ -16,10 +16,13 @@ function MovieCardListView(props) {
 
   return (
     <div className="card-container-list" onClick={onClick} >
+        <span class="overlay">
+
       <img
         className="image-list"
         src={`https://image.tmdb.org/t/p/w220_and_h330_face/${props.data.poster_path}`}
         alt="" />
+        </span>
 
       <div className="progressbar-container2">
         <ReatingView

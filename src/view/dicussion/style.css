@@ -67,7 +67,8 @@
 }
 
 .dicussion {
-  padding: 30px;
+  margin-left: 30px;
+  width: 100%;
 }
 
 .chat-container:hover .chat-bottom-pannel {

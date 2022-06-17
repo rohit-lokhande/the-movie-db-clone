@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 function Login() {
 
 
-  const [username,setUsername] = useState();
-  const [password,setPassword] = useState();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ function Login() {
   const onLoginClick = () => {
     dispatch(login(username, password));
     navigate('/');
-    
+
   }
 
 
@@ -41,28 +41,18 @@ function Login() {
 
       <br></br>
 
-
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Username</Form.Label>
           <Form.Control type="text" placeholder="" onChange={onUsernameUpdate} />
-
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="" onChange={onPasswordUpdate}/>
+          <Form.Control type="password" placeholder="" onChange={onPasswordUpdate} />
         </Form.Group>
-        {/*  
-  <Button variant="primary" type="submit">
-    Submit
-  </Button> */}
-
         <input type="button" value="Login" onClick={onLoginClick} className="btn-primary" />
       </Form>
-
-
-
     </Container>
   )
 }

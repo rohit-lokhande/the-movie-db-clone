@@ -37,89 +37,96 @@ function Search(props) {
         <Container>
             {
 
-                <div className="search-screen-container">
-                    <div className="search-screen-left-pannel">
-                        <div className="search-screen-left-pannel-header">
-                            <h3>Search Results</h3>
-                        </div>
-                        <div style={{
-                            paddingTop: '10px',
-                            paddingBottom: '10px'
-                        }}>
-
-                            <div className={`left-pannel-menu ${filter === 'movie' ? 'pannel-selected' : ''}`} onClick={onMovieSelect}>
-                                <h6>Movies</h6>
-                                <span className="search-counter">
-                                    {searchState.movies.length}
-
-                                </span>
+                <div className="split-container">
+                    <div className="left-pannel">
+                        <div className="container-with-header">
+                            <div className="header">
+                                <h3>Search Results</h3>
                             </div>
+                            <div className="container-body">
 
-                            <div className={`left-pannel-menu ${filter === 'tv' ? 'pannel-selected' : ''}`} onClick={onvTSelect}>
-                                <h6>TV Shows</h6>
-                                <span className="search-counter">
-                                    {searchState.tv.length}
 
-                                </span>
+                                <div className={`left-pannel-menu ${filter === 'movie' ? 'pannel-selected' : ''}`} onClick={onMovieSelect}>
+                                    <h6>Movies</h6>
+                                    <span className="search-counter">
+                                        {searchState.movies.length}
+
+                                    </span>
+                                </div>
+
+                                <div className={`left-pannel-menu ${filter === 'tv' ? 'pannel-selected' : ''}`} onClick={onvTSelect}>
+                                    <h6>TV Shows</h6>
+                                    <span className="search-counter">
+                                        {searchState.tv.length}
+
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div>
+                    <div className="right-pannel">
 
-                        {
-                            (filter === 'tv') ? (searchState.tv.length > 0) ? searchState.tv.map((number, index) =>
-                                <div className="media-details-verical-container" id={number.id} onClick={onMovieCardClick}>
-                                    <div>
-                                        <img
-                                            className="image1"
-                                            src={`https://image.tmdb.org/t/p/w220_and_h330_face/${number.poster_path}`}
-                                            alt="" />
-                                    </div>
-                                    <div className="media-details">
-                                        <div className="media-header">
-                                            <h6>{number.title}</h6>
-                                            <p className="date"> {dateFormat(number.release_date, "mmmm d, yyyy")}</p>
+                        <div>
 
+                            {
+                                (filter === 'tv') ? (searchState.tv.length > 0) ? searchState.tv.map((number, index) =>
+                                    <div className="media-details-verical-container" id={number.id} onClick={onMovieCardClick}>
+                                        <div>
+                                            <img
+                                                className="poster"
+                                                src={`https://image.tmdb.org/t/p/w220_and_h330_face/${number.poster_path}`}
+                                                alt="" />
                                         </div>
-                                        <div className="desc">
-                                            <p>{number.overview}</p>
+                                        <div className="media-details">
+                                            <div className="media-header">
+                                                <h6>{number.title}</h6>
+                                                <p className="date"> {dateFormat(number.release_date, "mmmm d, yyyy")}</p>
+
+                                            </div>
+                                            <div className="desc">
+                                                <p>{number.overview}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ): <p>There are no movies that matched your query.
+                                ) : <p>There are no movies that matched your query.
 
-                            </p> : searchState.movies.map((number, index) =>
-                                <div className="media-details-verical-container" id={number.id} onClick={onMovieCardClick}>
-                                    <div>
+                                </p> : searchState.movies.map((number, index) =>
+                                    <div className="media-details-verical-container" id={number.id} onClick={onMovieCardClick}>
+                                        <div className="media-poster">
 
-                                        <img
-                                            className="image1"
-                                            src={`https://image.tmdb.org/t/p/w220_and_h330_face/${number.poster_path}`}
-                                            alt="" />
-
-                                    </div>
-
-                                    <div className="media-details">
-
-
-                                        <div className="media-header">
-                                            <h6>{number.title}</h6>
-                                            <p className="date"> {dateFormat(number.release_date, "mmmm d, yyyy")}</p>
+                                            <img
+                                                className="poster"
+                                                src={`https://image.tmdb.org/t/p/w220_and_h330_face/${number.poster_path}`}
+                                                alt="" />
 
                                         </div>
 
-                                        <div className="desc">
-                                            <p>{number.overview}</p>
+                                        <div className="media-details">
+
+
+                                            <div className="media-header">
+                                                <h6>{number.title}</h6>
+                                                <p className="date"> {dateFormat(number.release_date, "mmmm d, yyyy")}</p>
+
+                                            </div>
+
+                                            <div className="desc">
+                                                <p>{number.overview}</p>
+                                            </div>
+
+
                                         </div>
 
 
                                     </div>
+                                )
+                            }
+
+                        </div>
 
 
-                                </div>
-                            )
-                        }
+
 
 
                     </div>

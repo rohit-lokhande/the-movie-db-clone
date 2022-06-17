@@ -6,13 +6,12 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import MovieCardListView from '../../component/movie_card/MovieCardListView';
 import store from '../../redux/store';
 import ExpandableContainer from '../../component/expandable-container';
-import './style.css';
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { fetchPaginatedList, sortList } from '../../redux/action/pagination-action';
 
 function ListView(props) {
     const listState = useSelector((state) => state.pagination);
-    let { type,filter } = useParams();
+    let { type, filter } = useParams();
     let navigate = useNavigate();
 
     const [sortState, setSortState] = useState('1');
@@ -42,13 +41,13 @@ function ListView(props) {
 
         let tempData = listState.data.map((todo) => {
             const tempTodo = { ...todo };
-           
-                return tempTodo
-            
+
+            return tempTodo
+
         });
 
 
-        var sortedData =  tempData.sort(sortMethods[item.id].method);
+        var sortedData = tempData.sort(sortMethods[item.id].method);
 
         dispatch(sortList(sortedData));
         console.log(item);
@@ -62,31 +61,36 @@ function ListView(props) {
         <div>
             {
                 (listState.isFetch) ?
-                    <div>
-                        <Container className='list-container'>
-                            <Col className='list-left-pannel'>
-                                <h5>Popular Movies</h5>
-                            </Col>
-                            <Row>
-                                <Col className='list-left-container'>
-                                    <ExpandableContainer onItemClick={onItemClick} />
-                                </Col>
 
-                                <Col xs={9}>
-                                    <Grid container rowSpacing={4} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
-                                        {
-                                            listState.data.map((number, index) =>
-                                                <Grid item xs={4} sm={3} md={2.4}>
-                                                    <MovieCardListView key={number.id} item={number} data={number} onClick={onMovieCardClick} />
-                                                </Grid>
-                                            )
-                                        }
-                                    </Grid></Col>
-                            </Row>
-                        </Container>
-                    </div>
+                    <Container>
+                        {
+
+                            <div>
+                                <h5>Popular Movies</h5>
+                                <div className="split-container">
+                                    <div className="left-pannel">
+                                        <ExpandableContainer onItemClick={onItemClick} />
+
+                                    </div>
+                                    <div className="right-pannel">
+                                        <Grid container rowSpacing={4} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+                                            {
+                                                listState.data.map((number, index) =>
+                                                    <Grid item xs={4} sm={3} md={2.4}>
+                                                        <MovieCardListView key={number.id} item={number} data={number} onClick={onMovieCardClick} />
+                                                    </Grid>
+                                                )
+                                            }
+                                        </Grid>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </Container>
                     : <div></div>
-            } 
+            }
 
         </div>
     )
