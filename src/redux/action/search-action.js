@@ -7,7 +7,7 @@ export const searchActions = {
 export const searchState = {
     isFetch: false,
     movies: [],
-    tv:[]
+    tv: []
 }
 
 
@@ -19,7 +19,7 @@ export function fetchMediaUsingQuery(query) {
             payload: {
                 isFetch: false,
                 movies: [],
-                tv:[]
+                tv: []
             }
         })
         const responce = await SearchService.fetchMediaUsingQuery(query).catch((error) => {
@@ -27,20 +27,21 @@ export function fetchMediaUsingQuery(query) {
         });
 
 
-var movies = responce.data.results.filter(function(item){
-    return item.media_type === 'movie';
- });
+        var movies = responce.data.results.filter(function (item) {
+            return item.media_type === 'movie';
+        });
 
- var tv = responce.data.results.filter(function(item){
-    return item.media_type === 'tv';
- });
+        var tv = responce.data.results.filter(function (item) {
+            return item.media_type === 'tv';
+        });
 
         dispatch({
             type: searchActions.FETCH_BY_QUERY,
             payload: {
                 isFetch: true,
                 movies: movies,
-                tv:tv           }
+                tv: tv
+            }
         })
     }
 }

@@ -20,9 +20,9 @@ function NavBar() {
         setShowSearch(!showSearch);
     }
 
-    
+
     const onLogoutClick = () => {
-     dispatch(logout());   
+        dispatch(logout());
     }
 
 
@@ -79,15 +79,14 @@ function NavBar() {
                         </Nav>
 
                         <Nav>
-                            <Nav.Link> <GoPlus color="#FFFFFF" size={24} /></Nav.Link>
 
                             {
-                                (authState.username != null) ? loginUserView(authState.username,onLogoutClick) : <Nav.Link href="/login">Login</Nav.Link>
+                                (authState.username != null) ? loginUserView(authState.username, onLogoutClick) : <Nav.Link href="/login">Login</Nav.Link>
                             }
 
 
                             <Nav.Link href="/signup">Join TMDB</Nav.Link>
-                            <Nav.Link> {
+                            {/* <Nav.Link> {
                                 showSearch ? <MdOutlineClose
                                     color="white"
                                     size={24}
@@ -95,7 +94,7 @@ function NavBar() {
                                     color="blue"
                                     size={24}
                                     onClick={onSearchClick} />
-                            }  </Nav.Link>
+                            }  </Nav.Link> */}
 
                         </Nav>
                     </Navbar.Collapse>
@@ -118,23 +117,29 @@ function NavBar() {
 }
 
 function loginUserView(username, onClick) {
-  
-    
-    
+
     return (
-        <div style={{
-            backgroundColor: 'rgb(var(--tmdbLogoRed))',
-            borderRadius: '40px',
-            padding: '8px',
-            alignItems: 'center',
-            textAlign: 'center',
-            width: '40px',
-            fontWeight: 600,
-            color: 'white'
-        }} onClick={onClick} >
-            <a>{username[0]}</a>
+        <div className="dropdown">
+            <Nav.Link className="dropbtn"><div style={{
+                backgroundColor: 'rgb(var(--tmdbLogoRed))',
+                borderRadius: '40px',
+                padding: '8px',
+                alignItems: 'center',
+                textAlign: 'center',
+                width: '40px',
+                fontWeight: 600,
+                color: 'white'
+            }} >
+                <a>{username[0]}</a>
+            </div></Nav.Link>
+            <div className="dropdown-content">
+                <a onClick={onClick}>Logout</a>
+
+            </div>
         </div>
     )
+
+
 
 }
 

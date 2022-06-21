@@ -9,8 +9,8 @@ export const detailsState = {
     details: {}
 }
 
-export function fetchMediaDetails(type,id) {
-console.log("sdfsdfsdfsd");
+export function fetchMediaDetails(type, id) {
+    console.log("sdfsdfsdfsd");
     return async function fetchMediaDetailsFromServer(dispatch, getState) {
         console.log('Trigger DEtails call');
         dispatch({
@@ -20,14 +20,27 @@ console.log("sdfsdfsdfsd");
                 data: {}
             }
         })
-        const responce = await MediaDetailService.fetchMediaDetails(type,id).catch((error) => {
+        const responce = await MediaDetailService.fetchMediaDetails(type, id).catch((error) => {
             console.log(error);
         });
+
+        const providerresponce = await MediaDetailService.fetchWatchProviders(type, id).catch((error) => {
+            console.log(error);
+        });
+
+        var data = responce.data;
+        if (providerresponce.data.results.IN == null) {
+            data.providers = providerresponce.data.results.US;
+
+        } else {
+            data.providers = providerresponce.data.results.IN;
+        }
+
         dispatch({
             type: detailsActions.FETCH_MOVIE_DETAILS,
             payload: {
                 isFetch: true,
-                data: responce.data
+                data: data
             }
         })
     }

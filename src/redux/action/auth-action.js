@@ -6,16 +6,18 @@ export const authActions = {
 }
 
 export const authState = {
-    username: null
+    username: null,
+    currentPath: '/',
+    error: null,
 }
 
 export function updateAuthStatus(){
     return async function updateAuthStatusFromLocalStorage(dispatch, getState) {
     
-       var token= localStorage.getItem('token');
+    //    var token= localStorage.getItem('token');
        var username = localStorage.getItem('username');
 
-       if(username != null && token != null){
+       if(username != null){
         dispatch({
             type: authActions.LOGIN,
             payload: {
@@ -44,17 +46,17 @@ export function logout(){
 
 export function login(username, password) {
 
-    return async function validateUserFromServer(dispatch, getState) {
-        const responce = await AuthService.login(username, password).catch((error) => {
-            console.log(error);
-        });
-        localStorage.setItem('token', responce.data.request_token);
-        localStorage.setItem('username', username);
-        dispatch({
-            type: authActions.LOGIN,
-            payload: {
-                username: username
-            }
-        })
+    const isValidUser =  AuthService.login(username, password);
+      
+    if (isValidUser) {
+        return {
+            username: username,
+            error: null
+        }
+    } else {
+        return {
+            username: null,
+            error: 'Please check username and password'
+        }
     }
 }

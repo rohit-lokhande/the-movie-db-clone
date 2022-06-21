@@ -1,9 +1,10 @@
 import axios from "axios";
 import { leatherboardEndpoint, popularListEndpoint, topRatedListEndpoint, trendingListEndpoint } from "../api/endpoint";
+import leatherboard from '../assets/json/leatherboard.json';
 
 class HomeService {
     fetchLeatherBoard() {
-        return axios.get(leatherboardEndpoint());
+        return leatherboard;
     }
 
     fetchPopularMedia(type) {

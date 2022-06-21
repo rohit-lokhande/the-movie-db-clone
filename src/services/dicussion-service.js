@@ -1,12 +1,11 @@
-import dicussion from "../assets/json/dicussions.json";
 class DicussionService {
     fetchDicussion() {
         return JSON.parse(localStorage.getItem('dicussion'));
     }
 
-    updateDicussion(chat,reply) {
+    updateDicussion(chat, reply) {
 
-      var dicussion =  JSON.parse(localStorage.getItem('dicussion'));
+        var dicussion = JSON.parse(localStorage.getItem('dicussion'));
 
         let updatedTasks = dicussion.map((todo) => {
             const tempTodo = { ...todo };

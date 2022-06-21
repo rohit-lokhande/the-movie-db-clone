@@ -4,6 +4,7 @@
 
   display: flex;
   align-items: center;
+  width: 100vw;
 }
 
 .poster {
@@ -38,8 +39,6 @@
   padding-left: 32px;
   padding-top: 50px;
 }
-
-
 
 .overview-container h2 {
   color: #ffffff;
@@ -89,6 +88,7 @@
   align-items: center;
   justify-content: center;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .action-tooltip {
@@ -118,7 +118,7 @@
   align-items: center;
 }
 
-.vote-container h6{
+.vote-container h6 {
   font-weight: 600;
 }
 
@@ -135,7 +135,7 @@
   /* margin-right: 8px !important; */
 }
 
-.progressbar-container{
+.progressbar-container {
   margin: 0px !important;
   margin-right: 4px !important;
   height: 75px;
@@ -143,23 +143,22 @@
   background-color: transparent !important;
 }
 
-.poster-container-shimmer{
+.poster-container-shimmer {
   width: 100% !important;
 }
 
-.prodgress-view{
+.prodgress-view {
   height: 70px;
   width: 70px;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
-.prodgress-view:hover{
+.prodgress-view:hover {
   height: 75px;
   width: 75px;
-  transition: all 0.3s; 
+  transition: all 0.3s;
 }
-
-
 
 li {
   display: inline;
@@ -177,17 +176,23 @@ ol {
 .play-trailer {
   color: #ffffff;
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  background: transparent;
+  border: none;
 }
 
-.play-trailer :hover {
+.play-trailer:hover {
   color: rgb(var(--lightGrey));
 }
 
-.play-trailer h6 {
-font-weight: 600;
+.play-trailer > h6 {
+  font-weight: 600;
+  margin: 0px !important;
 }
+.play-trailer > h6:hover {
+  color: rgb(var(--lightGrey));
 
+}
 .play-button {
   margin-right: 5px;
 }
@@ -211,11 +216,14 @@ font-weight: 600;
 }
 
 .header-container .header .movie-year {
-  color:rgb(var(--lightGrey));
+  color: rgb(var(--lightGrey));
   font-weight: normal !important;
   padding-left: 4px;
 }
 
+.movie-year:hover{
+  color: rgb(var(--lightGrey)) !important;
+}
 
 .header-container .header-details {
   color: #ffffff;
@@ -228,7 +236,7 @@ font-weight: 600;
   border: 1px white solid;
   padding-left: 2px;
   padding-right: 2px;
-color:  rgb(var(--lightGrey));
+  color: rgb(var(--lightGrey));
   font-size: 12px;
 }
 
@@ -255,4 +263,6 @@ color:  rgb(var(--lightGrey));
   text-decoration: none;
 }
 
-
+.movie-title {
+  cursor: pointer;
+}

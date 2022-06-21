@@ -40,7 +40,7 @@ function Home() {
     }
 
     return (
-        <Container>
+        <div className="content">
             <SearchPoster />
 
             <CategoryView
@@ -68,7 +68,7 @@ function Home() {
                 state={trendingState} />
 
             <LeatherBoard />
-        </Container>
+        </div>
     )
 }
 

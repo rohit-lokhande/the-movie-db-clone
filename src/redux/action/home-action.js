@@ -51,12 +51,12 @@ export const fetchLeatherBoard = () => {
                 data: [],
             }
         })
-        const responce = await HomeService.fetchLeatherBoard().catch((error)=>{});
+        const responce =  HomeService.fetchLeatherBoard();
         dispatch({
             type: homeActions.FETCH_LEATHERBOARD,
             payload: {
                 isFetch: true,
-                data: responce.data,
+                data: responce,
             }
         })
     }

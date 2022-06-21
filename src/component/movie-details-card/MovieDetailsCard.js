@@ -190,10 +190,10 @@ const ActionView = (props) => {
                 </li>
 
                 <li>
-                    <div className="play-trailer">
+                    <button className="play-trailer">
                         <FaPlay className="play-button" />
                         <h6>Play Trailer</h6>
-                    </div>
+                    </button>
                 </li>
             </ol>
         </div>
@@ -205,7 +205,7 @@ const HeaderView = (props) => {
     return (
         <div className="header-container">
             <div className="header">
-                <h1>{props.data.title != null ? props.data.title : props.data.name}</h1>
+                <h1 className="movie-title">{props.data.title != null ? props.data.title : props.data.name}</h1>
                 <h1 className="movie-year"> ({dateFormat(props.data.release_date, "yyyy")})</h1>
             </div>
 

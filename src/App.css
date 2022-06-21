@@ -44,18 +44,21 @@
 
 .route-body {
   padding-bottom: 30px;
-  /* display: flex; */
+  display: flex;
   flex: 1 1 auto;
   min-height: 80vh;
   height: auto;
   position: relative;
   top: 0;
   left: 0;
+  justify-content: center;
 }
 
 .split-container {
   padding-top: 20px;
   display: flex;
+  width: 100%;
+
 }
 
 .split-container > .left-pannel {
@@ -93,6 +96,22 @@
   font-size: 20px;
 }
 
-.container-with-header > .container-body{
- padding: 10px 0px; 
+.container-with-header > .container-body {
+  padding: 10px 0px;
+}
+.content {
+  max-width: var(--maxPrimaryPageWidth);
+  width: 100%;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0;
+}
+
+.content-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
 }

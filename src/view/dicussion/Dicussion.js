@@ -36,7 +36,7 @@ const rows = [
 ];
 
 function Dicussion(props) {
-    const [comment,setComment] = useState();
+    const [comment, setComment] = useState();
 
     const [filter, setFilter] = useState('movie');
 
@@ -57,63 +57,62 @@ function Dicussion(props) {
 
     return (
 
-<Container>
-{
-
-<div className="split-container">
-<div className="left-pannel">
-<div className="container-with-header">
-                           <div className="header">
-                            <h3>Discussion</h3>
-                        </div>
-                        <div className="container-body">
-
-
-                             <div className={`left-pannel-menu ${filter === 'movie' ? 'pannel-selected' : ''}`} onClick={onMovieSelect}>
-                                <h6>Movies</h6>
-                                <span className="search-counter">
-                                    {dicussionState.movie.length}
-
-                                </span>
+        <div className="content">
+            <div className="content-wrapper">
+                <div className="split-container">
+                    <div className="left-pannel">
+                        <div className="container-with-header">
+                            <div className="header">
+                                <h3>Discussion</h3>
                             </div>
+                            <div className="container-body">
 
-                            <div className={`left-pannel-menu ${filter === 'tv' ? 'pannel-selected' : ''}`} onClick={onvTSelect}>
-                                <h6>TV Shows</h6>
-                                <span className="search-counter">
-                                    {dicussionState.tv.length}
 
-                                </span>
-                            </div> 
+                                <div className={`left-pannel-menu ${filter === 'movie' ? 'pannel-selected' : ''}`} onClick={onMovieSelect}>
+                                    <h6>Movies</h6>
+                                    <span className="search-counter">
+                                        {dicussionState.movie.length}
+
+                                    </span>
+                                </div>
+
+                                <div className={`left-pannel-menu ${filter === 'tv' ? 'pannel-selected' : ''}`} onClick={onvTSelect}>
+                                    <h6>TV Shows</h6>
+                                    <span className="search-counter">
+                                        {dicussionState.tv.length}
+
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                       </div>
 
-                   
+
 
                     <div className="right-pannel">
 
-                    {
+                        {
                             (filter === 'tv') ? (dicussionState.tv.length > 0) ? dicussionState.tv.map((number, index) =>
-                            <DicussionCard
-                            number={number}
-                            ></DicussionCard>                            ): <p>There are no movies that matched your query.
+                                <DicussionCard
+                                    number={number}
+                                ></DicussionCard>) : <p>There are no movies that matched your query.
 
                             </p> : dicussionState.movie.map((number, index) =>
-                               <DicussionCard
-                               number={number}
-                               ></DicussionCard>
+                                <DicussionCard
+                                    number={number}
+                                ></DicussionCard>
                             )
                         }
 
 
 
-         
-        </div>
+
+                    </div>
 
                 </div>
-            }
+            </div>
+        </div>
 
-        </Container>
 
     )
 }

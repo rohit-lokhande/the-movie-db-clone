@@ -7,6 +7,7 @@
 
 .signup-point {
   margin-left: -20px;
+  margin-top: -6px;
   width: 1.2em;
   height: 1.2em;
 }
@@ -17,4 +18,10 @@
   font-size: 1em;
   line-height: 1.4em;
   margin: 0;
+}
+
+.alertView {
+  position: fixed;
+  margin: 30px;
+  right: 0;
 }

@@ -1,12 +1,15 @@
 import PaginationService from "../../services/pagination-service";
 
 export const paginationActions = {
-    FETCH_LIST: 'FETCH_LIST',
-    LIST_UPDATE: 'LIST_UPDATE'
+    SET_INITIAL_LOADING: 'SET_INITIAL_LOADING',
+    SET_FETCHED_CONTENTS: 'SET_FETCHED_CONTENTS',
+    SET_LOADING: 'SET_LOADING'
 }
 
 export const paginationState = {
     isFetch: false,
+    isLoading: false,
+    page: 1,
     data: [],
     sortMethod: '1'
 }
@@ -25,33 +28,34 @@ const sortMethods = {
 };
 
 
-export function fetchPaginatedList(type,filter) {
-
+export function fetchPaginatedList(type, filter, page) {
     return async function fetchPaginatedListFromServer(dispatch, getState) {
+
         dispatch({
-            type: paginationActions.FETCH_LIST,
-            payload: {
-                isFetch: false,
-                data: []
-            }
+            type: (page === 1) ? paginationActions.SET_INITIAL_LOADING : paginationActions.SET_LOADING,
         })
-        const responce = await PaginationService.fetchPaginationList(type,filter).catch((error) => {
+
+        const responce = await PaginationService.fetchPaginationList(type, filter, page).catch((error) => {
             console.log(error);
         });
 
-     var sortedData = responce.data.results.sort((a, b) => (a.popularity > b.popularity ? 1 : -1));
+        var sortedData = responce.data.results.sort((a, b) => (a.popularity > b.popularity ? 1 : -1));
 
-        dispatch({
-            type: paginationActions.FETCH_LIST,
-            payload: {
-                isFetch: true,
-                data: sortedData
-            }
-        })
+        setTimeout(() => {
+            dispatch({
+                type: paginationActions.SET_FETCHED_CONTENTS,
+                payload: {
+                    page: page,
+                    data: sortedData
+                }
+            })
+        }, 1000);
+
+
     }
 }
 
-export function sortList(data,sortType) {
+export function sortList(data, sortType) {
 
     return async function sortListLocal(dispatch, getState) {
 
@@ -62,6 +66,6 @@ export function sortList(data,sortType) {
                 data: data
             }
         })
-  
+
     }
 }

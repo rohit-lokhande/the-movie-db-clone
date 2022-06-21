@@ -54,4 +54,5 @@ html {
   --accountYellow: 210, 144, 1;
   --accountRed: 212, 2, 66;
   --imageBorderRadius: 8px;
+  --maxPrimaryPageWidth: 1400px;
 }

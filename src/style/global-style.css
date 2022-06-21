@@ -45,3 +45,13 @@
     text-align: center;
     color: rgba(var(--tmdbLightBlue), 1);
 }
+
+.load-more-view{
+  width: 100%;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.btn-load-more{
+  width: 100%;
+}

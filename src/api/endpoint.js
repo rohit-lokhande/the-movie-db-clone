@@ -1,33 +1,38 @@
-const BASE_URL = 'http://localhost:8000/';
+const BASE_URL = 'https://api.themoviedb.org/3/';
+
+
+const getEndPoint = (path) => {
+    return `https://api.themoviedb.org/3/${path}?api_key=dee17c7fa847c4e845721f113414b74c`;
+}
 
 export const popularListEndpoint = (filter) => {
     let endpoint = '';
     if (filter === 'streaming') {
-        endpoint = 'movies/popular';
+        endpoint = 'movie/popular';
     } else if (filter === 'tv') {
         endpoint = 'tv/popular';
     }
-    return `${BASE_URL}${endpoint}`;
+    return getEndPoint(endpoint);
 }
 
 export const topRatedListEndpoint = (filter) => {
     let endpoint = '';
     if (filter === 'streaming') {
-        endpoint = 'movies/top-rated';
+        endpoint = 'movie/top_rated';
     } else if (filter === 'tv') {
-        endpoint = 'tv/top-rated';
+        endpoint = 'tv/top_rated';
     }
-    return `${BASE_URL}${endpoint}`;
+    return getEndPoint(endpoint);
 }
 
 export const trendingListEndpoint = (filter) => {
     let endpoint = '';
     if (filter === 'day') {
-        endpoint = 'trending/day';
+        endpoint = 'trending/all/day';
     } else if (filter === 'week') {
-        endpoint = 'trending/week';
+        endpoint = 'trending/all/week';
     }
-    return `${BASE_URL}${endpoint}`;
+    return getEndPoint(endpoint);
 }
 
 export const leatherboardEndpoint = () => {
@@ -35,20 +40,24 @@ export const leatherboardEndpoint = () => {
     return `${BASE_URL}leatherboard`;
 }
 
-export const mediaDetailsEndpoint = (type,movieId) => {
-    return `${BASE_URL}media-details/${type}/${movieId}`;
+export const mediaDetailsEndpoint = (type, movieId) => {
+    let endpoint = `${type}/${movieId}`;
+    return getEndPoint(endpoint);
 }
 
+export const watchProvidersEndpoint = (type, movieId) => {
+    let endpoint = `${type}/${movieId}/watch/providers`;
+    return getEndPoint(endpoint);
+}
 
-export const paginationEndpoint = (type, filter) => {
-    console.log(type ,"=>", filter);
-    return `${BASE_URL}media/${type}/${filter}/4`;
+export const paginationEndpoint = (type, filter,page) => {
+    console.log(type, "=>", filter);
+    let endpoint = `${type}/${filter}`;
+
+   return `${getEndPoint(endpoint)}&language=en-US&page=${page}`;
+
 }
 
 export const searchQueryEndpoint = (query) => {
-    return `${BASE_URL}search/${query}`;
-}
-
-export const loginEndpoint = () => {
-    return `${BASE_URL}login`;
+    return `${getEndPoint('search/multi')}&language=en-US&query=${query}&page=1`;
 }

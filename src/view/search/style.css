@@ -11,6 +11,7 @@
   height: 141px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+
 }
 
 .media-details {
@@ -20,9 +21,14 @@
   justify-content: space-between;
 }
 
+.media-header > h6:hover {
+  color: rgba(var(--tmdbLightBlue), 1);
+}
+
 .media-header > h6 {
   margin-bottom: 8px !important;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .media-header > p {

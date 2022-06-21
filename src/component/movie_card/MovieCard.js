@@ -32,7 +32,7 @@ function MovieCard(props) {
       </div>
 
       <div
-        className="content">
+        className="media-content">
         <p className="title">{props.data.title != null ? props.data.title : props.data.name}</p>
         <p className="date"> {dateFormat(props.data.release_date, "mmm d, yyyy")}</p>
       </div>

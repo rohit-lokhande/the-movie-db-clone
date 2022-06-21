@@ -1,18 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Grid } from "@mui/material";
-import MovieCard from '../../component/movie_card/MovieCard';
-import { Button, Col, Container, Row } from "react-bootstrap";
 import MovieCardListView from '../../component/movie_card/MovieCardListView';
 import store from '../../redux/store';
 import ExpandableContainer from '../../component/expandable-container';
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchPaginatedList, sortList } from '../../redux/action/pagination-action';
+import { Button } from 'react-bootstrap';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 function ListView(props) {
     const listState = useSelector((state) => state.pagination);
     let { type, filter } = useParams();
     let navigate = useNavigate();
+
+    const [page, setPage] = useState(1);
 
     const [sortState, setSortState] = useState('1');
     const sortMethods = {
@@ -28,27 +31,28 @@ function ListView(props) {
     };
     const dispatch = useDispatch();
 
+    const onLoadMore = () => {
+        var currentPage = page + 1;
+        setPage(currentPage);
+        dispatch(fetchPaginatedList(type, filter, currentPage));
+
+    }
 
 
 
     useEffect(() => {
-        dispatch(fetchPaginatedList(type, filter));
+        console.log('Use effect page : => ', page);
+        dispatch(fetchPaginatedList(type, filter, page));
 
     }, []);
 
     const onItemClick = (item) => {
         setSortState(item.id);
-
         let tempData = listState.data.map((todo) => {
             const tempTodo = { ...todo };
-
             return tempTodo
-
         });
-
-
         var sortedData = tempData.sort(sortMethods[item.id].method);
-
         dispatch(sortList(sortedData));
         console.log(item);
     }
@@ -62,33 +66,55 @@ function ListView(props) {
             {
                 (listState.isFetch) ?
 
-                    <Container>
-                        {
+                    <div className="content">
+                        <div className="content-wrapper">
+                            {
 
-                            <div>
-                                <h5>Popular Movies</h5>
-                                <div className="split-container">
-                                    <div className="left-pannel">
-                                        <ExpandableContainer onItemClick={onItemClick} />
+                                <div>
+                                    <h5>Popular Movies</h5>
+                                    <div className="split-container">
+                                        <div className="left-pannel">
+                                            <ExpandableContainer onItemClick={onItemClick} />
 
-                                    </div>
-                                    <div className="right-pannel">
-                                        <Grid container rowSpacing={4} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+                                        </div>
+                                        <div className="right-pannel">
+
                                             {
-                                                listState.data.map((number, index) =>
-                                                    <Grid item xs={4} sm={3} md={2.4}>
-                                                        <MovieCardListView key={number.id} item={number} data={number} onClick={onMovieCardClick} />
-                                                    </Grid>
-                                                )
+                                                listState.data.length
                                             }
-                                        </Grid>
 
 
+                                            <Grid container rowSpacing={4} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+                                                {
+                                                    listState.data.map((number, index) =>
+                                                        <Grid item xs={4} sm={3} md={2.4}>
+                                                            <MovieCardListView key={number.id} item={number} data={number} onClick={onMovieCardClick} />
+                                                        </Grid>
+                                                    )
+                                                }
+                                            </Grid>
+
+                                            <div className='load-more-view'>
+                                                {
+                                                    (listState.isLoading) ? <CircularProgress /> : <Button className='btn-load-more' onClick={onLoadMore}>Load More</Button>
+
+                                                }
+
+
+
+
+
+
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        }
-                    </Container>
+                            }
+                        </div>
+                    </div>
+
+
                     : <div></div>
             }
 

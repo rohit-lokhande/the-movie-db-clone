@@ -34,9 +34,10 @@ function Search(props) {
     }
 
     return (
-        <Container>
-            {
 
+        <div className="content">
+        <div className="content-wrapper">
+        {
                 <div className="split-container">
                     <div className="left-pannel">
                         <div className="container-with-header">
@@ -66,78 +67,44 @@ function Search(props) {
                     </div>
 
                     <div className="right-pannel">
-
                         <div>
-
                             {
-                                (filter === 'tv') ? (searchState.tv.length > 0) ? searchState.tv.map((number, index) =>
-                                    <div className="media-details-verical-container" id={number.id} onClick={onMovieCardClick}>
-                                        <div>
-                                            <img
-                                                className="poster"
-                                                src={`https://image.tmdb.org/t/p/w220_and_h330_face/${number.poster_path}`}
-                                                alt="" />
-                                        </div>
-                                        <div className="media-details">
-                                            <div className="media-header">
-                                                <h6>{number.title}</h6>
-                                                <p className="date"> {dateFormat(number.release_date, "mmmm d, yyyy")}</p>
-
-                                            </div>
-                                            <div className="desc">
-                                                <p>{number.overview}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ) : <p>There are no movies that matched your query.
-
-                                </p> : searchState.movies.map((number, index) =>
-                                    <div className="media-details-verical-container" id={number.id} onClick={onMovieCardClick}>
-                                        <div className="media-poster">
-
-                                            <img
-                                                className="poster"
-                                                src={`https://image.tmdb.org/t/p/w220_and_h330_face/${number.poster_path}`}
-                                                alt="" />
-
-                                        </div>
-
-                                        <div className="media-details">
-
-
-                                            <div className="media-header">
-                                                <h6>{number.title}</h6>
-                                                <p className="date"> {dateFormat(number.release_date, "mmmm d, yyyy")}</p>
-
-                                            </div>
-
-                                            <div className="desc">
-                                                <p>{number.overview}</p>
-                                            </div>
-
-
-                                        </div>
-
-
-                                    </div>
-                                )
+                                (filter === 'tv') ? (searchState.tv.length > 0) ? searchState.tv.map((media, index) => horizontalMovieCard(media, onMovieCardClick))
+                                    : <p>There are tv shows that matched your query.</p>
+                                    : (searchState.movies.length > 0) ? searchState.movies.map((media, index) => horizontalMovieCard(media, onMovieCardClick))
+                                        : <p>There are no movies that matched your query.</p>
                             }
-
                         </div>
-
-
-
-
-
                     </div>
-
-
-
                 </div>
             }
+            </div>
+            </div>
 
-        </Container>
     )
 }
+
+function horizontalMovieCard(media, onMovieCardClick) {
+    return (
+        <div className="media-details-verical-container" id={media.id} onClick={onMovieCardClick}>
+            <div className="media-poster">
+                <img
+                    className="poster"
+                    src={`https://image.tmdb.org/t/p/w220_and_h330_face/${media.poster_path}`}
+                    alt="" />
+            </div>
+            <div className="media-details">
+                <div className="media-header">
+                    <h6>{media.title}</h6>
+                    <p className="date"> {dateFormat(media.release_date, "mmmm d, yyyy")}</p>
+                </div>
+                <div className="desc">
+                    <p>{media.overview}</p>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 
 export default Search;
