@@ -52,22 +52,6 @@
   text-align: justify;
 }
 
-.crew-container {
-}
-
-.crew-container h6 {
-  color: #ffffff;
-  margin: 0px !important;
-}
-
-.crew-container h6:hover {
-  color: #ffffff92;
-}
-
-.crew-container span {
-  color: #ffffff;
-  font-size: 14px !important;
-}
 
 .actions-container {
   display: flex;

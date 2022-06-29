@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateAuthStatus } from './redux/action/auth-action';
 import Dicussion from './view/dicussion/Dicussion';
 import dicussion from './assets/json/dicussions.json';
+import Crew from './view/movie-details/Crew';
 
 
 function App() {
@@ -46,8 +47,9 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="details/:type/:id" element={<MovieDetails />} />
           <Route path="list/:type/:filter" element={<ListView />} />
-          <Route path="search/:query" element={<Search />} />
+          <Route path="search" element={<Search />} />
           <Route path="dicussion" element={<Dicussion />} />
+          <Route path="cast" element={<Crew />} />
 
         </Routes>
       </div>

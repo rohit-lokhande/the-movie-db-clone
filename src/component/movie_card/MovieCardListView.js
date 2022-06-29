@@ -2,7 +2,7 @@ import React from "react";
 import './moviecard.css'
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import dateFormat from 'dateformat';
+// import dateFormat from 'dateformat';
 import ReatingView from "../rating-view/RatingView";
 
 function MovieCardListView(props) {
@@ -34,7 +34,7 @@ function MovieCardListView(props) {
       <div
         className="content-list">
         <p className="title">{props.data.title != null ? props.data.title : props.data.name}</p>
-        <p className="date"> {dateFormat(props.data.release_date, "mmm d, yyyy")}</p>
+        {/* <p className="date"> {dateFormat(props.data.release_date, "mmm d, yyyy")}</p> */}
       </div>
     </div>
   )

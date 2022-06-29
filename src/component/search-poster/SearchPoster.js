@@ -13,7 +13,7 @@ setQuery(e.target.value);
 
     const onSearchClick = () =>{
         if(query != null && query.length > 0){
-            navigate(`search/${query}`);
+            navigate(`search?query=${query}`);
         }
     }
 

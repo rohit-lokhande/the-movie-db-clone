@@ -10,7 +10,8 @@ import { FaStar, FaPlay } from 'react-icons/fa';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import randomColor from "randomcolor";
 import ReatingView from "../rating-view/RatingView";
-import dateFormat from 'dateformat';
+// import dateFormat from 'dateformat';
+import posterPlaceholder from '../../assets/images/poster_placeholder.webp';
 
 function MovieDetailsCard(props) {
 
@@ -35,7 +36,7 @@ function MovieDetailsCard(props) {
                 <div className="poster-container">
                     <img className="poster"
                         alt="Poster"
-                        src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${props.data.poster_path}`} />
+                        src={`${props.data.poster_path != null ? `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${props.data.poster_path}` : posterPlaceholder } `} />
 
                     {(provider != null) && <div className="watch-option-container">
                         <div style={{
@@ -65,7 +66,7 @@ function MovieDetailsCard(props) {
 
                 <div className="overview-container">
                     <HeaderView data={props.data} />
-                    <ActionView data={props.data} />
+                    <ActionView data={props.data} onPlayTrailer={props.onPlayTrailer} />
                     <div style={{
                         paddingTop: '32px'
                     }}>
@@ -190,7 +191,7 @@ const ActionView = (props) => {
                 </li>
 
                 <li>
-                    <button className="play-trailer">
+                    <button className="play-trailer" onClick={props.onPlayTrailer}>
                         <FaPlay className="play-button" />
                         <h6>Play Trailer</h6>
                     </button>
@@ -206,7 +207,7 @@ const HeaderView = (props) => {
         <div className="header-container">
             <div className="header">
                 <h1 className="movie-title">{props.data.title != null ? props.data.title : props.data.name}</h1>
-                <h1 className="movie-year"> ({dateFormat(props.data.release_date, "yyyy")})</h1>
+                {/* <h1 className="movie-year"> ({dateFormat(props.data.release_date, "yyyy")})</h1> */}
             </div>
 
             <div className="header-details">
@@ -217,7 +218,8 @@ const HeaderView = (props) => {
 
                     {
                         (props.data.release_date != null) && <li>
-                            <a>{props.data.release_date} ({props.data.production_companies[0].origin_country})</a>
+                            <a>{props.data.release_date} {props.data.production_companies.length >= 1 ? props.data.production_companies[0].origin_country : ''}
+                            </a>
                         </li>
                     }
 

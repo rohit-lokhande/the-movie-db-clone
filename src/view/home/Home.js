@@ -24,7 +24,7 @@ function Home() {
     }, []);
 
     const onMovieCardClick = (e, type) => {
-        navigate(`/details/${type}/${e}`);
+        navigate(`/details/${type}/${e.id}`);
     }
 
     const onCatrgoryFilterChange = (filter) => {
@@ -38,6 +38,11 @@ function Home() {
     const onTrendingFilterChange = (filter) => {
         dispatch(fetchTrendingList(filter.id));
     }
+
+    const onTrendingCardClick = (e, type) => {
+        navigate(`/details/${e.media_type}/${e.id}`);
+    }
+
 
     return (
         <div className="content">
@@ -62,7 +67,7 @@ function Home() {
             <CategoryView
                 title='Trending'
                 onFilterChange={onTrendingFilterChange}
-                onCardClick={onMovieCardClick}
+                onCardClick={onTrendingCardClick}
                 filter={trendingFilter}
                 selectedFilter={trendingFilter[0]}
                 state={trendingState} />

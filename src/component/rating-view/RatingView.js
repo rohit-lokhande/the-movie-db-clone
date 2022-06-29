@@ -31,7 +31,7 @@ function ReatingView(props) {
     return (
         <CircularProgressbar
             value={props.value}
-            text={(props.value === 0) ? 'NR' : `${props.text}%`}
+            text={(props.value === 0) ? 'NR' : `${Math.floor(props.text)}%`}
             background={true}
             styles={{
                 path: {

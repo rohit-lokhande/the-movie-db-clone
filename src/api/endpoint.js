@@ -50,6 +50,17 @@ export const watchProvidersEndpoint = (type, movieId) => {
     return getEndPoint(endpoint);
 }
 
+export const trailersEndpoint = (type, movieId) => {
+    let endpoint = `${type}/${movieId}/videos`;
+    return getEndPoint(endpoint);
+}
+
+export const castEndpoint = (type,movieId) => {
+    let endpoint = `${type}/${movieId}/credits`;
+    return getEndPoint(endpoint);
+}
+
+
 export const paginationEndpoint = (type, filter,page) => {
     console.log(type, "=>", filter);
     let endpoint = `${type}/${filter}`;

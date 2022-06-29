@@ -1,7 +1,7 @@
 import randomColor from "randomcolor";
 import React, { useEffect, useState } from "react";
 import './style.css';
-import dateFormat from "dateformat";
+// import dateFormat from "dateformat";
 import { FormControl, InputGroup } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { addDicussions, fetchDicussions } from "../../redux/action/dicussion-action";
@@ -86,7 +86,7 @@ function chatView(props) {
                 </div>
             </div>
             <div className="chat-right-pannel">
-                <p>{dateFormat(props.timestamp, "mmm d yyyy, h:MM TT")}</p>
+                {/* <p>{dateFormat(props.timestamp, "mmm d yyyy, h:MM TT")}</p> */}
             </div>
         </div>
     )
@@ -102,7 +102,7 @@ function replayView(props) {
                 </div>
             </div>
             <div className="chat-right-pannel">
-                <p>{dateFormat(props.timestamp, "mmm d yyyy, h:MM TT")}</p>
+                {/* <p>{dateFormat(props.timestamp, "mmm d yyyy, h:MM TT")}</p> */}
             </div>
         </div>
     )

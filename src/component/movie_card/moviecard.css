@@ -21,6 +21,7 @@
     background: #dbdbdb;
     overflow: hidden;
     cursor: pointer;
+    width: 150px;
 
 }
 .image-list{

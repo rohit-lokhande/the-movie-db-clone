@@ -2,15 +2,15 @@ import React from "react";
 import './moviecard.css'
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import dateFormat from 'dateformat';
 import ReatingView from "../rating-view/RatingView";
+// import dateFormat from "dateformat";
 
 function MovieCard(props) {
 
 
 
    const onClick= () => {
-    props.onClick(props.data.id);
+    props.onClick(props.data);
    }
 
 
@@ -33,8 +33,8 @@ function MovieCard(props) {
 
       <div
         className="media-content">
-        <p className="title">{props.data.title != null ? props.data.title : props.data.name}</p>
-        <p className="date"> {dateFormat(props.data.release_date, "mmm d, yyyy")}</p>
+        {/* <p className="title">{props.data.title != null ? props.data.title : props.data.name}</p> */}
+        {/* <p className="date"> {dateFormat(props.data.release_date, "mmm d, yyyy")}</p> */}
       </div>
     </div>
   )

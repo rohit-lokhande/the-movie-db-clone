@@ -90,3 +90,7 @@
   font-size: 1.5em;
   font-weight: 600;
 }
+
+.scroll-view:last-child {
+  padding-right: 12px;
+}
