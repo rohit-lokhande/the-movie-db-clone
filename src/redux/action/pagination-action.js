@@ -3,7 +3,8 @@ import PaginationService from "../../services/pagination-service";
 export const paginationActions = {
     SET_INITIAL_LOADING: 'SET_INITIAL_LOADING',
     SET_FETCHED_CONTENTS: 'SET_FETCHED_CONTENTS',
-    SET_LOADING: 'SET_LOADING'
+    SET_LOADING: 'SET_LOADING',
+    SORT_LIST: 'SORT_LIST'
 }
 
 export const paginationState = {
@@ -60,7 +61,7 @@ export function sortList(data, sortType) {
     return async function sortListLocal(dispatch, getState) {
 
         dispatch({
-            type: paginationActions.LIST_UPDATE,
+            type: paginationActions.SORT_LIST,
             payload: {
                 isFetch: true,
                 data: data

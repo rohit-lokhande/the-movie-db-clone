@@ -48,9 +48,9 @@ function ListView(props) {
 
     const onItemClick = (item) => {
         setSortState(item.id);
-        let tempData = listState.data.map((todo) => {
-            const tempTodo = { ...todo };
-            return tempTodo
+        let tempData = listState.data.map((data) => {
+            const tempData = { ...data };
+            return tempData
         });
         var sortedData = tempData.sort(sortMethods[item.id].method);
         dispatch(sortList(sortedData));
@@ -65,11 +65,9 @@ function ListView(props) {
         <div>
             {
                 (listState.isFetch) ?
-
                     <div className="content">
                         <div className="content-wrapper">
                             {
-
                                 <div>
                                     <h5>Popular Movies</h5>
                                     <div className="split-container">
@@ -78,12 +76,6 @@ function ListView(props) {
 
                                         </div>
                                         <div className="right-pannel">
-
-                                            {
-                                                listState.data.length
-                                            }
-
-
                                             <Grid container rowSpacing={4} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
                                                 {
                                                     listState.data.map((number, index) =>

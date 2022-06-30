@@ -35,6 +35,17 @@ const paginationReducer = (state = paginationState, action) => {
                 sortMethod: '1'
             }
 
+            
+        case paginationActions.SORT_LIST:
+            return {
+                isFetch: true,
+                isLoading: false,
+                page: 1,
+                data: action.payload.data,
+                sortMethod: '1'
+            }
+
+
         default:
             return state;
     }
